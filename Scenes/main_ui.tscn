@@ -1,0 +1,142 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagm3k86qy04p"]
+
+[ext_resource type="Script" path="res://Scripts/mainUI.gd" id="1_48ke5"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48ke5")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Binary Converter"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Convert"
+
+[node name="option_obtn" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 6
+selected = 0
+popup/item_0/text = "Base 10 -> Base 2"
+popup/item_0/id = 0
+popup/item_1/text = "Base 10 -> Base 16"
+popup/item_1/id = 1
+popup/item_2/text = "Base 2 -> Base 10"
+popup/item_2/id = 2
+popup/item_3/text = "Base 2 -> Base 16"
+popup/item_3/id = 3
+popup/item_4/text = "Base 16 -> Base 2"
+popup/item_4/id = 4
+popup/item_5/text = "Base 16 -> Base 10"
+popup/item_5/id = 5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="input_le" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(375, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+placeholder_text = "Enter base value"
+
+[node name="convert_btn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Convert"
+
+[node name="result_l" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Result:"
+
+[node name="openbtn" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Credits"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.968627, 0.968627, 0.968627, 1)
+theme_override_font_sizes/font_size = 36
+text = "65022498 ณัฐวุฒิ ผาสุข
+65022881 สิรดนัยอินกัน
+65022904 สุธี จันทร์ขาว
+65022645 ภวิศ ลือเรือง
+65022814 วิทวัฒน์ ดิษฐศรี
+65025985 อภิรักษ์ คงมี"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="exitBtn" type="Button" parent="MarginContainer/ColorRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "X"
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/option_obtn" to="." method="_on_option_obtn_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/convert_btn" to="." method="_on_convert_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/openbtn" to="." method="_on_openbtn_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/exitBtn" to="." method="_on_exit_btn_pressed"]
